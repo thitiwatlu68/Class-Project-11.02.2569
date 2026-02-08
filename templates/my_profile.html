@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{%block title %} หน้า Profile - ระบบแจ้งซ่อม {% endblock %}
+{%block content%}
+<body>
+  <h1>{{ title }}</h1>
+  <p>ยินดีต้อนรับสู่เว็บ Flask</p>
+  <h2>สวัสดี {{ username }}</h2>
+  <img style="height: 300px;" src="{{ url_for('static', filename='images/profile.jpg') }}" alt="Logo">
+  <p>อายุ {{ age }} ปี</p>
+
+  {% if is_admin %}
+    <p>คุณคือแอดมิน</p>
+    <a href="/admin">ไปหน้าจัดการ</a>
+  {% else %}
+    <p>คุณคือสมาชิกทั่วไป</p>
+    <button>ไอ้คนธรรมดา</button>
+  {% endif %}
+</body>
+{% endblock %}

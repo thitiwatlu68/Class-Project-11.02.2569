@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<div>
+  <h1>{{ title }}</h1>
+  <p>ยินดีต้อนรับหน้ารายการร้องเรียน</p>
+  <p>จำนวนเคส {{ request_cases|length }}</p>
+  <ul>
+    {% for case in request_cases%}
+      <li>
+        <strong>#{{ case.id }}</strong>: {{ case.case_name }}
+      </li>
+    {% endfor %}
+  </ul>
+  {% for case in request_cases%}
+    <div class="bg-white rounded-lg shadow-md p-6 w-sm m-4">
+    <h3 class="text-xl font-bold text-gray-800">เคสที่  {{ case.id }} แจ้งซ่อม : {{ case.case_name }}</h3>
+    <p class="text-gray-600 mt-2">สถานที่: {{ case.location }}</p>
+    <p class="text-gray-600 mt-2">รายละเอียด: {{ case.description or "ไม่มีรายละเอียดเพิ่มเติม" }}</p>
+    <div class="mt-4">
+      <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm">
+        รอดำเนินการ
+      </span>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}
